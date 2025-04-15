@@ -1,85 +1,325 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Configuración de caracteres y responsividad -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initialscale=1.0">
-    <!-- Título de la Página -->
-    <title>Gestión Universidad de Nariño</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Librería - Gestión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(201, 221, 240);
+    }
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container h1 {
+      margin: 0;
+      font-size: 60px;
+      color: #333;
+    }
+
+    .buttons-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .language-selector {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-icon {
+      width: 70px;
+      height: 60px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .slogan {
+      margin: 0;
+      font-size: 18px;
+      color: #1a075f;
+      font-family: 'Roboto', sans-serif;
+      margin-top: 5px;
+      font-style: italic;
+      margin-left: 30px;
+    }
+
+    .language-dropdown {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      border-radius: 4px;
+      z-index: 1000;
+    }
+
+    .language-dropdown div {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .language-dropdown div:hover {
+      background-color: #f0f0f0;
+    }
+
+    header img {
+      width: 150px;
+    }
+
+    header button {
+      padding: 10px 16px;
+      font-size: 20px;
+      border: 3px solid #101113;
+      border-radius: 6px;
+      background-color: #50cca3;
+      color: #130909;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    header button:hover {
+      background-color: #0056b3;
+      color: white;
+    }
+
+    .main-content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px;
+      gap: 20px;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .welcome-text {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      white-space: nowrap;
+    }
+
+    .left-section img {
+      width: 600px;
+      height: auto;
+      border-radius: 8px;
+      margin-left: 20px;
+    }
+
+    .right-section {
+      max-width: 1100px;
+      font-size: 15px;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .right-section h2 {
+      margin: 0 0 10px;
+      font-size: 30px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .right-section p {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.5;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .video-section {
+      text-align: left;
+      padding: 10px;
+    }
+
+    .video-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: #1a075f;
+      margin-bottom: 20px;
+    }
+
+    .video-section video {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 20px;
+      color: #070606;
+      background-color: #e0e0e0;
+      padding: 10px 0;
+      margin-top: 30px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .left-section img {
+        width: 90%;
+        margin-left: 0;
+      }
+
+      .right-section {
+        max-width: 90%;
+        text-align: center;
+      }
+
+      .right-section h2 {
+        font-size: 26px;
+      }
+
+      .right-section p {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Aquí se incluirá el contenido visible de la página -->
+  <header>
+    <div class="logo-container">
+      <img src="imagenes/logo.png" alt="Logo" />
+      <div>
+        <h1 id="titulo">Tinta, páginas y encuentros</h1>
+        <p class="slogan" id="slogan">"Algoritmos que conocen tus gustos: la nueva forma de descubrir lecturas significativas"</p>
+      </div>
+    </div>
+    <div class="buttons-container">
+      <div class="language-selector">
+        <img src="imagenes/icono-idioma.png" alt="Cambiar idioma" id="language-toggle" class="language-icon" title="Cambiar idioma" />
+        <div class="language-dropdown" id="language-dropdown">
+          <div data-lang="es">Español</div>
+          <div data-lang="en">English</div>
+        </div>
+      </div>
+      <button id="registro-btn">Registro</button>
+      <button id="login-btn">Login</button>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="left-section">
+      <div class="welcome-text" id="bienvenida">¡Bienvenidos a la plataforma de gestión de la librería!</div>
+      <img src="imagenes/libreria.png" alt="Imagen de la Librería" />
+    </div>
+
+    <div class="right-section">
+      <h2 id="subtitulo">Conoce nuestra librería</h2>
+      <p id="descripcion">
+        Explora una colección diversa de libros seleccionados especialmente para ti. Nuestra librería incluye títulos
+        de diferentes géneros, estilos y autores, pensada para adaptarse a tus gustos e intereses, con la ayuda 
+        de nuestro motor de recomendaciones, descubrirás lecturas que realmente te encantarán. ¡Sumérgete en 
+        el mundo de la lectura personalizada!
+      </p>
+    </div>
+  </div>
+
+  <!-- Sección de video -->
+  <div class="video-section">
+    <h2>¡Explora más en nuestro video!</h2>
+    <video controls>
+      <source src="videos/presentacion.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </div>
+
+  <footer class="footer">
+    2025 Tinta, páginas y encuentros - Todos los derechos reservados
+  </footer>
+
+  <script>
+    const toggle = document.getElementById("language-toggle");
+    const dropdown = document.getElementById("language-dropdown");
+
+    toggle.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (!e.target.closest('.language-selector')) {
+        dropdown.style.display = "none";
+      }
+    });
+
+    document.querySelectorAll("#language-dropdown div").forEach(item => {
+      item.addEventListener("click", (e) => {
+        const lang = e.target.dataset.lang;
+        cambiarIdioma(lang);
+        dropdown.style.display = "none";
+      });
+    });
+
+    function cambiarIdioma(lang) {
+      const traducciones = {
+        es: {
+          titulo: "Tinta, páginas y encuentros",
+          slogan: '"Algoritmos que conocen tus gustos: la nueva forma de descubrir lecturas significativas"',
+          bienvenida: "¡Bienvenidos a la plataforma de gestión de la librería!",
+          subtitulo: "Conoce nuestra librería",
+          descripcion: "Explora una colección diversa de libros seleccionados especialmente para ti. Nuestra librería incluye títulos de diferentes géneros, estilos y autores, pensada para adaptarse a tus gustos e intereses, con la ayuda de nuestro motor de recomendaciones, descubrirás lecturas que realmente te encantarán. ¡Sumérgete en el mundo de la lectura personalizada!",
+          registro: "Registro",
+          login: "Login"
+        },
+        en: {
+          titulo: "Ink, Pages & Encounters",
+          slogan: '"Algorithms that know your taste: a new way to discover meaningful reads"',
+          bienvenida: "Welcome to the bookstore management platform!",
+          subtitulo: "Discover our bookstore",
+          descripcion: "Explore a diverse collection of books specially selected for you. Our bookstore includes titles from different genres, styles, and authors, designed to suit your tastes and interests. With the help of our recommendation engine, you'll find reads that truly delight you. Dive into the world of personalized reading!",
+          registro: "Sign Up",
+          login: "Sign In"
+        }
+      };
+
+      const t = traducciones[lang];
+      document.getElementById("titulo").textContent = t.titulo;
+      document.getElementById("slogan").textContent = t.slogan;
+      document.getElementById("bienvenida").textContent = t.bienvenida;
+      document.getElementById("subtitulo").textContent = t.subtitulo;
+      document.getElementById("descripcion").textContent = t.descripcion;
+      document.getElementById("registro-btn").textContent = t.registro;
+      document.getElementById("login-btn").textContent = t.login;
+    }
+  </script>
 </body>
-   <!-- Encabezado -->
-    <header>
-        <!-- Agrega el logo de la universidad -->
-        <img src="imgenes/Logo.png" alt="Logo Universidad de Nariño"
-width="100">
-        <!-- Título principal -->
-        <h1>Universidad de Nariño</h1>
-        <!-- Breve descripción -->
-        <p>Gestión de Estudiantes y Docentes</p>
-    </header>
-    <!-- Menú de Navegación -->
-    <nav>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#estudiantes">Estudiantes</a></li>
-            <li><a href="#docentes">Docentes</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>    
-        <main>
-            <section id="inicio">
-                <h2>Bienvenido</h2>
-                <p>Plataforma para la gestión de estudiantes y docentes.</p>
-                <!-- Contenedor para imágenes con estilo Flexbox -->
-                <div style="display: flex; gap: 10px;">
-                    <img src="imgenes/estudiantes.png" alt="Estudiantes de la
-    Universidad de Nariño" width="300">
-                <img src="imgenes/docentes.jpeg" alt="Docentes de la
-    Universidad de Nariño" width="300">
-            </div>
-        </section>
-        <section id="docentes">
-            <h2>Docentes</h2>
-            <p>Datos sobre asignaturas, horarios y noticias
-        académicas.</p>
-            <a href="https://www.udenar.edu.co/docentes/"
-    target="_blank">Más información sobre gestión docente</a>
-            <div>
-                <h3>Gestión de Docentes</h3>
-                <!-- Formulario para ingresar datos de docentes -->
-                <form>
-                <label for="nombre-docente">Nombre del
-            Docente:</label>
-                <input type="text" id="nombre-docente" name="nombredocente" placeholder="Ingrese el nombre"><br><br>
-                <label for="materia-docente">Materia:</label>
-                <input type="text" id="materia-docente"
-            name="materia-docente" placeholder="Ingrese la materia"><br><br>
-                <button type="button">Agregar Docente</button>
-                <button type="button">Actualizar Docente</button>
-                <button type="button">Eliminar Docente</button>
-                </form>
-            </div>
-        </section>
-        <section id="video">
-            <h2>Conoce Nuestra Universidad</h2>
-            <p>Descubre más sobre la Universidad de Nariño en el
-        siguiente video:</p>
-            <!-- Incrustar video de YouTube -->
-            <iframe width="560" height="315"
-    src="https://www.youtube.com/embed/8gPP5SvC-98?si=aWoPfOv9_5N-KH5L"
-    title="YouTube video player" frameborder="0" allow="accelerometer;
-    autoplay; clipboard-write; encrypted-media; gyroscope; picture-inpicture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen></iframe>
-        </section>
-        </main>
-<!-- Pie de Página -->
-<footer>
-    <p>&copy; 2025 Universidad de Nariño - Todos los derechos
-   reservados</p>
-    </footer>
-   </body>
-       
 </html>
