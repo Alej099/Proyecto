@@ -2,6 +2,20 @@
 Proyecto “Desarrollo de un Motor de Recomendaciones de Libros Basado en Redes Neuronales”
 
 estructura en django 
+instalacion Django 
+visual terminal 
+verificar instalacion de python comando:   python --version
+verificar instalacion postgres 
+instalar Django: pip install django psycopg2
+ir a pgadmin crear una base de datos vacia llamada Libreria_bd
+crear usuario postgres asignar todos los permisos y colocarle contraseña 1234
+en los archivos de la (libreria mirar estructura) ir a settings.py 
+cambiar usuario por su usuario 
+migracion de basa de datos django a postgres: python manage.py makemigrations lib_general
+python manage.py migrate
+python manage.py runserver
+
+
 
 libreria/                  # Proyecto principal
 ├── libreria/              # Configuración del proyecto
