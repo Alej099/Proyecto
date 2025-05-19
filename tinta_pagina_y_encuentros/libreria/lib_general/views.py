@@ -16,7 +16,16 @@ def about(request):
     return render(request, 'about.html') 
 
 def category(request):
-    return render(request, 'category.html') 
+    def categoria_view(request):
+    genero = request.GET.get('genero', '')
+    libros = Libro.objects.filter(genero=genero) if genero else Libro.objects.all()
+    generos_disponibles = Libro.objects.values_list('genero', flat=True).distinct()
+
+    return render(request, 'category.html', {
+        'libros': libros,
+        'generos': generos_disponibles,
+        'genero_seleccionado': genero,
+    })
 
 def contact(request):
     return render(request, 'contact.html') 
