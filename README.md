@@ -1,4 +1,4 @@
-# Proyecto
+# Proyecto http://34.228.166.232:8080/
 Proyecto “Desarrollo de un Motor de Recomendaciones de Libros Basado en Redes Neuronales”
 
 estructura en django 
